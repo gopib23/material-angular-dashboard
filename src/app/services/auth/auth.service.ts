@@ -37,6 +37,16 @@ export class AuthService {
       );
   }
 
+  public register(data): Observable<any> {
+    return this.http.post(`${this.url}/user`, data)
+      .pipe(
+        map((res: { user: any}) => {
+          this.isLogged$.next(false);
+          return of(false);
+        }),
+      );
+  }
+
   public logout() {
     localStorage.clear();
     this.user = null;

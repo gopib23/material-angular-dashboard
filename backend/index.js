@@ -62,7 +62,7 @@ passport.use(new LocalStrategy(
       if (password !== user.password) {
         return done(null, false, { message: 'Incorrect password.' });
       }
-      return done(null, {name:user.name, email: user.email});
+      return done(null, {userId: user._id , name:user.name, email: user.email});
     }).catch(err =>{
       return done(null, false, { message: err });
     });
@@ -77,10 +77,17 @@ passport.use(new JwtStrategy(
   },
   (payload, done) => {
     // Here you can insert your own logic.
-    if (payload.id !== mockUser.id) {
-      return done(null, false, { message: 'Incorrect username.' });
-    }
-    return done(null, mockUser);
+    console.log(payload);
+    userModel.findOne({email:payload.email, _id: payload.userId}).then(user => {
+      console.log(user);
+      if(!user){
+        return done(null, false, { message: 'User not found.' });
+      }
+      return done(null, user);
+    }).catch(err =>{
+      return done(null, false, { message: err });
+    });
+
   },
 ));
 
