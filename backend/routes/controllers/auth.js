@@ -5,7 +5,11 @@ export const login = (req, res) => {
   passport.authenticate(
     'local',
     { session: false },
-    (err, user) => {
+    (err, user, data) => {
+      console.log(err);
+      console.log(user);
+      console.log(data?data.message:'');
+      
       if (err || !user) {
         return res.status(400).json({
           message: 'Invalid email or password',

@@ -12,13 +12,13 @@ export class SidebarComponent extends BaseSidebarComponent {
   public menu = [
     { name: 'Dashboard', link: '/app/dashboard', icon: 'dashboard' },
     { name: 'Investigations', link: '/app/investigations', icon: 'grid_on' },
-    {
+   /*  {
       name: 'Auth', children: [
       { name: 'Sign in', link: '/auth/login' },
       { name: 'Sign up', link: '/auth/sign-up' },
       { name: 'Forgot password', link: '/auth/forgot-password' }],
       icon: 'lock',
     },
-    { name: '404', link: '/404', icon: 'build' },
+    { name: '404', link: '/404', icon: 'build' }, */
   ];
 }
