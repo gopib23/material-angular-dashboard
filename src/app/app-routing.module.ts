@@ -14,9 +14,9 @@ import { AuthGuard } from './services/auth';
       [
         { path: '', redirectTo: 'app/dashboard', pathMatch: 'full' },
         {
-          path: 'app', canActivate: [AuthGuard], component: CommonLayoutComponent, children: [
+          path: 'app', component: CommonLayoutComponent, children: [
             { path: 'dashboard', component: DashboardComponent, pathMatch: 'full' },
-            { path: 'investigations', component: InvestigationsComponent, pathMatch: 'full' },
+            { path: 'investigations', canActivate: [AuthGuard], component: InvestigationsComponent, pathMatch: 'full' },
             {
               path: 'investigation',
               component: FormWrapperComponent,

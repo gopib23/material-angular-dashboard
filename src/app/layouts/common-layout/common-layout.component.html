@@ -13,7 +13,19 @@
           <label class="mdl-textfield__label" for="search">Enter your query...</label>
         </div>
       </div>
-
+      <ng-container>
+        <a routerLink="/" class="blank-layout-card-link mr-1" title="Donate">
+          <i class="material-icons mdl-list__item-icon">account_balance_wallet</i>
+        </a>
+      </ng-container>
+      <ng-container *ngIf="!user">
+        <a routerLink="/auth/login" class="blank-layout-card-link mr-1" title="Login">
+          <i class="material-icons mdl-list__item-icon">person</i>
+        </a>
+        <a routerLink="/auth/sign-up" class="blank-layout-card-link" title="Become a member">
+          <i class="material-icons mdl-list__item-icon">person_add</i>
+        </a>
+      </ng-container>
       <ng-container *ngIf="user">
         <app-notification-menu></app-notification-menu>
 
